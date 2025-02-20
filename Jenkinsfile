@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'akhilreddyv371/nginx-app:latest'
-        KUBE_CONFIG = '/home/jenkins/.kube/config'
+        // KUBE_CONFIG = '/home/jenkins/.kube/config'
     }
 
     stages {
