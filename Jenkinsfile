@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'akhilreddyv371/nginx-app:latest'
-        // KUBE_CONFIG = '/home/jenkins/.kube/config'
+        KUBE_CONFIG = '/home/jenkins/.kube/config'
     }
 
     stages {
@@ -24,7 +24,7 @@ pipeline {
         stage('Push Image to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId:'DockerCredential', usernameVaribale: 'USERNAMEVAR', passwordVariable: 'PASSWORDVAR')]) {
-                    sh 'docker login -u ${USERNAMEVAR} --password-stdin'
+                    sh 'docker login -u ${USERNAMEVAR} -p ${PASSWORDVAR}'
                     sh 'docker push ${DOCKER_IMAGE}' 
                 }
             }
